@@ -16,6 +16,7 @@ buildscript {
 
 allprojects {
     repositories {
+        //使用Google的AdMob需要添加此Google的Maven存储库
         google()
         jcenter()
         
