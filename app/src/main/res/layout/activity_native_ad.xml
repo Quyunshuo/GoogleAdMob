@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".NativeAdActivity">
 
+    <FrameLayout
+        android:id="@+id/ad_root"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/ad_root_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
