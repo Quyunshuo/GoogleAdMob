@@ -10,12 +10,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mInterstitialTv;
-
+    private AdView mBanner;
     //InterstitialAd在Activity的整个生命周期中，可以使用一个对象来请求并显示多个插页式广告，因此只需构造一次即可。
     private InterstitialAd mInterstitialAd;
 
@@ -23,13 +24,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initInterstitialAd();
         initView();
+        initBanner();
+        initInterstitialAd();
+
     }
 
     private void initView() {
         mInterstitialTv = findViewById(R.id.ad_Interstitial);
         mInterstitialTv.setOnClickListener(this);
+        mBanner = findViewById(R.id.ad_banner);
+    }
+
+    /**
+     * 初始化BannerAd
+     */
+    private void initBanner() {
+        //创建一个请求实例
+        AdRequest adRequest = new AdRequest.Builder().build();
+        //发送一个广告请求并展示
+        mBanner.loadAd(adRequest);
     }
 
     /**
