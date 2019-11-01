@@ -2,6 +2,7 @@ package com.quyunshuo.googleadmob;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.google.android.gms.ads.InterstitialAd;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mInterstitialTv;
+    private TextView mRewardedTv;
     private AdView mBanner;
     //InterstitialAd在Activity的整个生命周期中，可以使用一个对象来请求并显示多个插页式广告，因此只需构造一次即可。
     private InterstitialAd mInterstitialAd;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mInterstitialTv = findViewById(R.id.ad_Interstitial);
         mInterstitialTv.setOnClickListener(this);
         mBanner = findViewById(R.id.ad_banner);
+        mRewardedTv = findViewById(R.id.ad_rewarded);
+        mRewardedTv.setOnClickListener(this);
     }
 
     /**
@@ -112,6 +116,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "InterstitialAd请求失败",
                             Toast.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.ad_rewarded:
+                Intent intent = new Intent(this, RewardedAdActivity.class);
+                startActivity(intent);
                 break;
         }
     }
