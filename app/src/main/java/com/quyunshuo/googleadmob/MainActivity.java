@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mInterstitialTv;
     private TextView mRewardedTv;
+    private TextView mNativeTv;
     private AdView mBanner;
     //InterstitialAd在Activity的整个生命周期中，可以使用一个对象来请求并显示多个插页式广告，因此只需构造一次即可。
     private InterstitialAd mInterstitialAd;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBanner = findViewById(R.id.ad_banner);
         mRewardedTv = findViewById(R.id.ad_rewarded);
         mRewardedTv.setOnClickListener(this);
+        mNativeTv = findViewById(R.id.ad_native);
+        mNativeTv.setOnClickListener(this);
     }
 
     /**
@@ -120,6 +123,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.ad_rewarded:
                 Intent intent = new Intent(this, RewardedAdActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.ad_native:
+                Intent intentNative = new Intent(this, NativeAdActivity.class);
+                startActivity(intentNative);
                 break;
         }
     }

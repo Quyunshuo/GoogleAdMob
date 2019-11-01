@@ -83,8 +83,8 @@ public class RewardedAdActivity extends AppCompatActivity implements View.OnClic
                 //在用户因与广告互动而应获得奖励时，系统会调用此方法。
                 //可通过 RewardItem 参数的 getType() 和 getAmount() 方法访问为广告单元配置的奖励详细信息。
                 mGoldCoinCount = mGoldCoinCount + rewardItem.getAmount();
-                mGoldCoinTv.setText(mGoldCoinCount+"");
-                Log.d("MiYan", "onUserEarnedReward: "+mGoldCoinCount);
+                mGoldCoinTv.setText(mGoldCoinCount + "");
+                Log.d("MiYan", "onUserEarnedReward: " + mGoldCoinCount);
             }
 
             @Override
@@ -125,6 +125,14 @@ public class RewardedAdActivity extends AppCompatActivity implements View.OnClic
                     Toast.makeText(this, "请求失败", Toast.LENGTH_SHORT).show();
                 }
                 break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mRewardedAd != null) {
+            mRewardedAd = null;
         }
     }
 }
